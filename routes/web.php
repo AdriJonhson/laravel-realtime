@@ -26,6 +26,12 @@ $this->group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
     $this->group(['middleware' => 'auth'], function(){
         $this->get('dashboard', 'DashboardController@index')->name('dashboard');
+
+        $this->get('products', 'ProductController@index')->name('product.index');
+        $this->get('products/paginate', 'ProductController@productsPaginate')->name('product.paginate');
+        $this->get('products/create', 'ProductController@create')->name('product.create');
+        $this->post('products/create', 'ProductController@store')->name('product.store');
+
     });
 
 });
